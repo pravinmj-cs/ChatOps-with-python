@@ -3,12 +3,13 @@ import psutil
 import os
 import socket
 
-ACCESS_KEY = "https://niyatainfotech1.webhook.office.com/webhookb2/154c1208-39a9-4804-9d58-2babb82179a6@d2884742-ac3f-49b3-9834-7139f07fa308/IncomingWebhook/ab2c749966214cc89ba161dcf04ae7eb/845373b4-6d2b-4a82-b24f-1f569e551d68"
-IMG1 = "https://gitlab.com/pravinmj.cs/testdevops/uploads/61a203eeaf07e6998356d44d9872633d/sd.png"
-IMG2 = "https://gitlab.com/pravinmj.cs/testdevops/uploads/916439a4ba14e6e484d2915df7a53346/saa.png"
+ACCESS_KEY = "Your Connector access URL"
+IMG1 = "A https link for a cpu section image placement"
+IMG2 = "A https link for a memory section image placement"
 
-SET_CPU_LIMIT = 10
-SET_MEMORY_LIMIT = 10
+# Set the threshold limit for CPU and memory
+SET_CPU_LIMIT = 80
+SET_MEMORY_LIMIT = 80
 
 
 def connect_teams(access_key):
@@ -22,7 +23,7 @@ def add_section(**data):
     section = pymsteams.cardsection()
     section.title(f"Alert-from server - {data['host_ip']}")
     # Activity Elements
-    section.activityTitle(f"Current {data['type']} usage at {data['value']}%")
+    section.activityTitle(f"Current {data['type']} usage at {data['value']}")
     section.activityImage(data["img"])
     return section
 
